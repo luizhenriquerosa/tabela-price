@@ -5,6 +5,7 @@ const Parameters = new Schema(
     ratePerMonth: { type: Schema.Number },
     numberOfMonth: { type: Schema.Number },
     financedAmount: { type: Schema.Number },
+    paidInstallments: { type: Schema.Number },
   },
   {
     timestamps: false,
