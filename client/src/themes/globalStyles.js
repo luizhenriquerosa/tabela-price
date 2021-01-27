@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import "react-toastify/dist/ReactToastify.css";
 
 const GlobalStyles = createGlobalStyle`
 	* {
@@ -6,16 +7,18 @@ const GlobalStyles = createGlobalStyle`
 		margin: 0;
 		border: 0;
 		box-sizing: border-box;
+		font-family: Poppins;
+
+		--color-primary: #41d3bd;
+		--color-secondary: #21247f;
+
+		--font-color-primary: #2c3236;
 	}
 
-  html,
-  body, #root {
-    height: 100vh;
-		width: 100%;
-	}
-	
-  body {
-		-webkit-font-smoothing: antialiased;
+	button, input {
+		&:active, &:focus {
+			outline: 0;
+		}
 	}
 `;
 
