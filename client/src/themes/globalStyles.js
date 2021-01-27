@@ -1,5 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import "react-toastify/dist/ReactToastify.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const GlobalStyles = createGlobalStyle`
 	* {
@@ -19,6 +20,16 @@ const GlobalStyles = createGlobalStyle`
 		&:active, &:focus {
 			outline: 0;
 		}
+	}
+
+	body, #root {
+		width: 100%;
+		height: 100vh;
+		background-color: var(--color-primary)
+	}
+
+	.container {
+		overflow-y: auto;
 	}
 `;
 

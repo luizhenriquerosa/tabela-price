@@ -7,6 +7,9 @@ const TableSchema = new Schema(
       ref: "parameters",
       required: true,
     },
+    totalAmountToPaid: { type: Schema.Types.Number, required: true },
+    totalAmortization: { type: Schema.Types.Number, required: true },
+    totalInterestToPaid: { type: Schema.Types.Number, required: true },
     installments: {
       required: true,
       type: [

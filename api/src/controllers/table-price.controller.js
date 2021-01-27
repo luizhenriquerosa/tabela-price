@@ -5,7 +5,8 @@ class TablePriceController {
     const params = req.query;
     try {
       const tables = await TablePriceService.getTable({
-        numberOfMonth: Number(params.numberOfMonth),
+        numberOfMonths: Number(params.numberOfMonths),
+        newNumberOfMonths: Number(params.newNumberOfMonths),
         ratePerMonth: Number(params.ratePerMonth),
         financedAmount: Number(params.financedAmount),
         paidInstallments: Number(params.paidInstallments),
@@ -21,7 +22,8 @@ class TablePriceController {
     const params = req.body;
     try {
       const table = await TablePriceService.createTable({
-        numberOfMonth: Number(params.numberOfMonth),
+        numberOfMonths: Number(params.numberOfMonths),
+        newNumberOfMonths: Number(params.newNumberOfMonths),
         ratePerMonth: Number(params.ratePerMonth),
         financedAmount: Number(params.financedAmount),
         paidInstallments: Number(params.paidInstallments),

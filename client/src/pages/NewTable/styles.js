@@ -1,16 +1,8 @@
 import styled from "styled-components";
 
-export const PageContainer = styled.div`
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--color-primary);
-`;
-
 export const ParametersForm = styled.form`
   padding: 20px;
+  margin: 25px 0;
   max-width: 500px;
   background-color: white;
   height: auto;
@@ -25,13 +17,22 @@ export const ParametersForm = styled.form`
     align-items: center;
 
     label {
+      align-items: center;
       width: 45%;
       display: flex;
 
+      @media (max-width: 496px) {
+        font-size: 14px;
+      }
+
       small {
-        margin-left: 5px;
+        margin: 10px 5px;
         font-size: 8px;
         align-self: center;
+
+        @media (max-width: 496px) {
+          align-self: start;
+        }
       }
     }
 
@@ -43,6 +44,8 @@ export const ParametersForm = styled.form`
       margin: 10px 0;
       padding: 0 10px;
       height: 50px;
+      font-size: 18px;
+      text-align: center;
 
       &:focus {
         border: 2px solid var(--color-primary);

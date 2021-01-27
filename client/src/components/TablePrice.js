@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { toCurrency } from "../utils/utils";
 
 const TableWrapper = styled.div`
-  margin: 10px 0;
   overflow-x: auto;
 `;
 
@@ -11,12 +10,15 @@ const Table = styled.table`
   background-color: white;
   border-radius: 8px;
   border-collapse: collapse;
-  thead {
-    tr {
-      th {
+  font-size: 1rem;
+  tr {
+    th {
+      text-align: end;
+      font-weight: 600;
+      padding: 8px;
+
+      &:first-of-type {
         text-align: center;
-        font-weight: 600;
-        padding: 8px;
       }
     }
   }
@@ -36,6 +38,11 @@ const Table = styled.table`
         }
       }
     }
+  }
+
+  margin: 0px 0px 10px 0px;
+  @media (max-width: 991px) {
+    margin: 10px 0;
   }
 `;
 

@@ -25,6 +25,10 @@ const Card = styled.div`
         font-weight: 300;
         margin-left: 20px;
       }
+
+      @media (max-width: 496px) {
+        font-size: 1rem;
+      }
     }
   }
 `;
@@ -49,8 +53,29 @@ function TablePriceInfo({ tablePrice }) {
         </li>
         <li>
           <span>Nº de períodos</span>
-          <span>{toMonthExtensive(tablePrice.numberOfMonth)}</span>
+          <span>{toMonthExtensive(tablePrice.numberOfMonths)}</span>
         </li>
+        {tablePrice.paidInstallments > 0 && (
+          <>
+            <li>
+              <span>Prestações pagas</span>
+              <span>{tablePrice.paidInstallments}</span>
+            </li>
+            <li>
+              <span>Novo período</span>
+              <span>{toMonthExtensive(tablePrice.newNumberOfMonths)}</span>
+            </li>
+            <li>
+              <span>Novo valor da prestação </span>
+              <span>
+                {toCurrency(
+                  tablePrice.installments[tablePrice.installments.length - 1]
+                    .installmentAmount
+                )}
+              </span>
+            </li>
+          </>
+        )}
       </ul>
     </Card>
   );

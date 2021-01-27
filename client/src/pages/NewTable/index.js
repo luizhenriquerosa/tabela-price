@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { showToastMessage } from "../../components/ToastMessage.js";
-import { PageContainer, ParametersForm, Title, Subtitle } from "./styles.js";
+import { ParametersForm, Title, Subtitle } from "./styles.js";
 import history from "../../services/history";
+import { Container } from "react-bootstrap";
 
 function NewTable() {
   const [ratePerMonth, setRatePerMonth] = useState("");
-  const [numberOfMonth, setNumberOfMonth] = useState("");
+  const [numberOfMonths, setNumberOfMonths] = useState("");
   const [financedAmount, setFinancedAmount] = useState("");
-  const [paidInstallments, setpaidInstallments] = useState("");
+  const [paidInstallments, setPaidInstallments] = useState("");
+  const [newNumberOfMonths, setNewNumberOfMonths] = useState("");
 
   const API_URL_GET_TABLE_PRICE = "http://localhost:5001/table-price";
   const API_URL_POST_TABLE_PRICE = "http://localhost:5001/table-price";
@@ -27,9 +29,9 @@ function NewTable() {
       });
     }
 
-    if (!numberOfMonth) {
+    if (!numberOfMonths) {
       return showToastMessage({ type: "error", message: "Informe o período" });
-    } else if (numberOfMonth <= 0) {
+    } else if (numberOfMonths <= 0) {
       return showToastMessage({
         type: "error",
         message: "Informe um período positivo",
@@ -57,14 +59,15 @@ function NewTable() {
 
     const bodyRequest = JSON.stringify({
       ratePerMonth,
-      numberOfMonth,
+      numberOfMonths,
       financedAmount,
       paidInstallments,
+      newNumberOfMonths,
     });
 
     try {
       const resultGet = await fetch(
-        `${API_URL_GET_TABLE_PRICE}?ratePerMonth=${ratePerMonth}&numberOfMonth=${numberOfMonth}&financedAmount=${financedAmount}&paidInstallments=${paidInstallments}`
+        `${API_URL_GET_TABLE_PRICE}?ratePerMonth=${ratePerMonth}&numberOfMonths=${numberOfMonths}&financedAmount=${financedAmount}&paidInstallments=${paidInstallments}&newNumberOfMonths=${newNumberOfMonths}`
       );
 
       const { tables: tablePriceExists } = await resultGet.json();
@@ -96,7 +99,7 @@ function NewTable() {
   };
 
   return (
-    <PageContainer>
+    <Container className="d-flex justify-content-center">
       <ParametersForm onSubmit={handleSubmit}>
         <Title>Tabela Price</Title>
         <Subtitle>
@@ -114,13 +117,13 @@ function NewTable() {
           />
         </div>
         <div className="field">
-          <label htmlFor="numberOfMonth">Período - Qtd. meses</label>
+          <label htmlFor="numberOfMonths">Período - Qtd. meses</label>
           <input
             placeholder="Ex: 12"
             type="number"
-            id="numberOfMonth"
-            value={numberOfMonth}
-            onChange={(e) => setNumberOfMonth(e.target.value)}
+            id="numberOfMonths"
+            value={numberOfMonths}
+            onChange={(e) => setNumberOfMonths(e.target.value)}
           />
         </div>
         <div className="field">
@@ -142,12 +145,26 @@ function NewTable() {
             type="number"
             id="paidInstallments"
             value={paidInstallments}
-            onChange={(e) => setpaidInstallments(e.target.value)}
+            onChange={(e) => setPaidInstallments(e.target.value)}
           />
         </div>
+        {paidInstallments && (
+          <div className="field">
+            <label htmlFor="newNumberOfMonths">
+              Período novo <small>(opcional)</small>
+            </label>
+            <input
+              placeholder="Ex: 5"
+              type="number"
+              id="newNumberOfMonths"
+              value={newNumberOfMonths}
+              onChange={(e) => setNewNumberOfMonths(e.target.value)}
+            />
+          </div>
+        )}
         <button>CALCULAR</button>
       </ParametersForm>
-    </PageContainer>
+    </Container>
   );
 }
 
