@@ -1,4 +1,7 @@
 import express from "express";
+import TablePriceController from "../controllers/table-price.controller";
+import cors from "cors";
+import bodyparser from "body-parser";
 
 class Server {
   port = process.env.TABLE_PRICE_API_PORT || 3000;
@@ -20,13 +23,13 @@ class Server {
   }
 
   setupMiddlewares() {
-    this.app.use(express.json());
+    this.app.use(bodyparser.json());
+    this.app.use(cors());
   }
 
   setupRoutes() {
-    this.app.get("/", (req, res) => {
-      res.json({ status: "running" });
-    });
+    this.app.get("/table-price", TablePriceController.index);
+    this.app.post("/table-price", TablePriceController.store);
   }
 }
 
