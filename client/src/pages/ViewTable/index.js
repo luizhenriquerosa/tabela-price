@@ -1,4 +1,4 @@
-import { Main, Title } from "./styles";
+import { Title } from "./styles";
 import TablePriceInfo from "../../components/TablePriceInfo";
 import TablePrice from "../../components/TablePrice";
 import { Container, Row, Col } from "react-bootstrap";

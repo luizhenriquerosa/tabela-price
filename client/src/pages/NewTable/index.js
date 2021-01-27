@@ -11,8 +11,8 @@ function NewTable() {
   const [paidInstallments, setPaidInstallments] = useState("");
   const [newNumberOfMonths, setNewNumberOfMonths] = useState("");
 
-  const API_URL_GET_TABLE_PRICE = "http://localhost:5001/table-price";
-  const API_URL_POST_TABLE_PRICE = "http://localhost:5001/table-price";
+  const { REACT_APP_API_URL_GET_TABLE_PRICE } = process.env;
+  const { REACT_APP_API_URL_POST_TABLE_PRICE } = process.env;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -67,7 +67,7 @@ function NewTable() {
 
     try {
       const resultGet = await fetch(
-        `${API_URL_GET_TABLE_PRICE}?ratePerMonth=${ratePerMonth}&numberOfMonths=${numberOfMonths}&financedAmount=${financedAmount}&paidInstallments=${paidInstallments}&newNumberOfMonths=${newNumberOfMonths}`
+        `${REACT_APP_API_URL_GET_TABLE_PRICE}?ratePerMonth=${ratePerMonth}&numberOfMonths=${numberOfMonths}&financedAmount=${financedAmount}&paidInstallments=${paidInstallments}&newNumberOfMonths=${newNumberOfMonths}`
       );
 
       const { tables: tablePriceExists } = await resultGet.json();
@@ -79,7 +79,7 @@ function NewTable() {
         });
       }
 
-      const resultPost = await fetch(API_URL_POST_TABLE_PRICE, {
+      const resultPost = await fetch(REACT_APP_API_URL_POST_TABLE_PRICE, {
         method: "POST",
         body: bodyRequest,
         headers: { "Content-Type": "application/json" },

@@ -77,7 +77,7 @@ export const Title = styled.p`
   margin: 10px 0;
   font-size: 36px;
   font-weight: 500;
-  color: var(--font-color-primary);
+  color: var(--color-secondary);
 `;
 
 export const Subtitle = styled.p`

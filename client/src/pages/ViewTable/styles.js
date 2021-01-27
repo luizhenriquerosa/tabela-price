@@ -1,10 +1,5 @@
 import styled from "styled-components";
 
-export const Main = styled.div`
-  width: auto;
-  padding: 10px 20px;
-`;
-
 export const Title = styled.p`
   display: flex;
   flex-direction: row;
