@@ -1,48 +1,72 @@
 {
-	"info": {
-		"_postman_id": "b59527ce-1a28-4ba2-968f-e7ea909936df",
-		"name": "Table Price API",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-	},
-	"item": [
-		{
-			"name": "Find Table",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": ""
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Create Table",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    ratePerMonth: 1.5,\n    numberOfMonths: 12,\n    financedAmount: 10000.00,\n    paidInstallments:'',\n    newNumberOfMonths: '',\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:5001/table-price",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "5001",
-					"path": [
-						"table-price"
-					]
-				}
-			},
-			"response": []
-		}
-	]
+  "info": {
+    "_postman_id": "b59527ce-1a28-4ba2-968f-e7ea909936df",
+    "name": "Table Price API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Find Table",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5001/table-price?ratePerMonth=1.5&numberOfMonths=12&financedAmount=10000.00&paidInstallments&newNumberOfMonths",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5001",
+          "path": ["table-price"],
+          "query": [
+            {
+              "key": "ratePerMonth",
+              "value": "1.5"
+            },
+            {
+              "key": "numberOfMonths",
+              "value": "12"
+            },
+            {
+              "key": "financedAmount",
+              "value": "10000.00"
+            },
+            {
+              "key": "paidInstallments",
+              "value": null,
+              "description": "optional"
+            },
+            {
+              "key": "newNumberOfMonths",
+              "value": null,
+              "description": "optional"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create Table",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"ratePerMonth\": 1.5,\n    \"numberOfMonths\": 12,\n    \"financedAmount\": 10000.00,\n    \"paidInstallments\": \"\",\n    \"newNumberOfMonths\": \"\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5001/table-price",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5001",
+          "path": ["table-price"]
+        }
+      },
+      "response": []
+    }
+  ]
 }
