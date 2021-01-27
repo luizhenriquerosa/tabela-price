@@ -1,15 +1,18 @@
 import Mongoose, { Schema } from "mongoose";
 
-const Parameters = new Schema(
+const ParameterSchema = new Schema(
   {
-    ratePerMonth: { type: Schema.Number },
-    numberOfMonth: { type: Schema.Number },
-    financedAmount: { type: Schema.Number },
-    paidInstallments: { type: Schema.Number },
+    ratePerMonth: { type: Schema.Types.Number, required: true },
+    numberOfMonth: { type: Schema.Types.Number, required: true },
+    financedAmount: { type: Schema.Types.Number, required: true },
+    paidInstallments: { type: Schema.Types.Number },
   },
   {
     timestamps: false,
+    versionKey: false,
   }
 );
 
-export default Mongoose.model("parameters", Parameters);
+const ParametersModel = Mongoose.model("parameters", ParameterSchema);
+
+export default ParametersModel;
