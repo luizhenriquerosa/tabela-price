@@ -70,11 +70,10 @@ function NewTable() {
       const { tables: tablePriceExists } = await resultGet.json();
 
       if (tablePriceExists.length > 0) {
-        // return history.push({
-        //   pathname: "/resultado",
-        //   state: { tablePrice: tablePriceExists[0] },
-        // });
-        return;
+        return history.push({
+          pathname: "/resultado",
+          state: { tablePrice: tablePriceExists[0] },
+        });
       }
 
       const resultPost = await fetch(API_URL_POST_TABLE_PRICE, {
@@ -86,11 +85,10 @@ function NewTable() {
       const { table: tablePriceCreated } = await resultPost.json();
 
       if (tablePriceCreated) {
-        // return history.push({
-        //   pathname: "/resultado",
-        //   state: { tablePrice: tablePriceCreated },
-        // });
-        return;
+        return history.push({
+          pathname: "/resultado",
+          state: { tablePrice: tablePriceCreated },
+        });
       }
     } catch (error) {
       showToastMessage({ type: "error", message: error.message });

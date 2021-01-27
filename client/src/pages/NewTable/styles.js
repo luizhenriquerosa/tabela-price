@@ -10,7 +10,7 @@ export const PageContainer = styled.div`
 `;
 
 export const ParametersForm = styled.form`
-  padding: 10px 15px;
+  padding: 20px;
   max-width: 500px;
   background-color: white;
   height: auto;
